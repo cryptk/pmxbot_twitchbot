@@ -7,6 +7,7 @@ setup_params = dict(
     entry_points=dict(
         pmxbot_handlers = [
             'pmxbot_twitchbot = twitchbot',
+            'pmxbot_badwords = twitchbot.badwords:Badwords',
         ]
     ),
     description="A series of plugins to make pmxbot useful as a twitch.tv channel moderation bot",

@@ -2,8 +2,9 @@ import httplib2
 import json
 import datetime
 
-from pmxbot.core import command, on_join, execdelay, contains, regexp
+import pmxbot
 
+from pmxbot.core import command, on_join, execdelay, contains, regexp
 
 @command(aliases=('ut'))
 def uptime(client, event, channel, nick, rest):
@@ -24,15 +25,14 @@ def uptime(client, event, channel, nick, rest):
     end = datetime.datetime.utcnow().replace(microsecond=0)
     return "%s has been broadcasting for %s" % (channelstring, datetime.timedelta(seconds=end.timestamp() - begin.timestamp()))
 
-
 @command(aliases=('h'))
 def help(client, event, channel, nick, rest):
-    "Override help command... help will be re-added in a form that whispers it to the user instead of the channel"
+    "Returns help text"
     return "Help command removed"
-
 
 @execdelay(name="addtwitchcaps", channel='#fakechan', howlong=datetime.timedelta(seconds=2), repeat=False)
 def addtwitchcaps(client, event):
-    "Request twitch.tv IRCv3 capacities 2 seconds after login"
+    "A testing command"
     client.cap('REQ', ':twitch.tv/membership')
     client.cap('REQ', ':twitch.tv/tags')
+
