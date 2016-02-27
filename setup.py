@@ -24,6 +24,9 @@ setup_params = dict(
         'Topic :: Communications :: Chat',
         'Topic :: Communications :: Chat :: Internet Relay Chat',
     ],
+    install_requires=[
+        'httplib2',
+    ]
 )
 
 if __name__ == '__main__':
