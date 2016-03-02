@@ -5,6 +5,7 @@ import datetime
 import pmxbot
 
 from pmxbot.core import command, on_join, execdelay, contains, regexp
+from random import choice
 
 @command(aliases=('ut'))
 def uptime(client, event, channel, nick, rest):
@@ -36,3 +37,14 @@ def addtwitchcaps(client, event):
     client.cap('REQ', ':twitch.tv/membership')
     client.cap('REQ', ':twitch.tv/tags')
 
+@command()
+def seppuku(client, event, channel, nick, rest):
+    "You have dishonored your family... there is only one option..."
+    messages = [
+                "{nick} has returned from afar having failed in his mission",
+                "After witnessing our disappointment, {nick} knows there is only one option",
+                "In accordance with bushido, the ancient honor code of the samurai...",
+                "While his family watches, {nick} plunges the knife"
+               ]
+    yield choice(messages).format(nick=nick)
+    yield "/timeout %s 300"
